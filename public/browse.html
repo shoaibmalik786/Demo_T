@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Tradeya &middot; The easiest way to get anything you want without spending any money.</title>
+<meta name="description" content="BlocksIt.js jQuery plugin Demonstration #2 Pinterest dynamic grid with CSS3 Transitions by inWebson.com"/>
+<meta name="keywords" content="demonstration,demo,jquery,blocksit.js,css3,dynamic,grid,layout,inwebson"/>
+<link rel='stylesheet' href='css/style.css' media='screen' />
+<script src="https://github.com/drm/jquery-plugins/raw/master/jquery.endless-pager.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<!--[if lt IE 9]>
+<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<script src="js/blocksit.min.js"></script>
+<script>
+$(document).ready(function() {
+  
+  //blocksit define
+  $(window).load( function() {
+    $('#content').BlocksIt({
+      numOfCol: 5,
+      offsetX: 8,
+      offsetY: 8
+    });
+  });
+  
+  //window resize
+  var currentWidth = 1100;
+  $(window).resize(function() {
+    var winWidth = $(window).width();
+    var conWidth;
+    if(winWidth < 660) {
+      conWidth = 440;
+      col = 2
+    } else if(winWidth < 880) {
+      conWidth = 660;
+      col = 3
+    } else if(winWidth < 1100) {
+      conWidth = 880;
+      col = 4;
+    } else {
+      conWidth = 1100;
+      col = 5;
+    }
+    
+    if(conWidth != currentWidth) {
+      currentWidth = conWidth;
+      $('#content').width(conWidth);
+      $('#content').BlocksIt({
+        numOfCol: col,
+        offsetX: 8,
+        offsetY: 8
+      });
+    }
+  });
+});
+</script>
+<!-- Le styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <style>
+
+    /* GLOBAL STYLES
+    -------------------------------------------------- */
+    /* Padding below the footer and lighter body text */
+
+    body {
+      padding-bottom: 40px;
+      color: #5a5a5a;
+    }
+
+
+
+    /* CUSTOMIZE THE NAVBAR
+    -------------------------------------------------- */
+
+    /* Special class on .container surrounding .navbar, used for positioning it into place. */
+    .navbar-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      margin-top: 0px;
+      width:100%;
+      margin-bottom: -10px; /* Negative margin to pull up carousel. 90px is roughly margins and height of navbar. */
+    }
+    .navbar-wrapper .navbar {
+       
+       margin-left:-115px;
+       padding-bottom:-50px;
+    }
+
+    /* Remove border and change up box shadow for more contrast */
+    .navbar .navbar-inner {
+      border: 0;
+      -webkit-box-shadow: 0 2px 10px rgba(0,0,0,.25);
+         -moz-box-shadow: 0 2px 10px rgba(0,0,0,.25);
+              box-shadow: 0 2px 10px rgba(0,0,0,.25);
+    }
+
+    /* Downsize the brand/project name a bit */
+    .navbar .brand {
+      padding: 14px 20px 16px; /* Increase vertical padding to match navbar links */
+      font-size: 16px;
+      font-weight: bold;
+      text-shadow: 0 -1px 0 rgba(0,0,0,.5);
+    }
+
+    /* Navbar links: increase padding for taller navbar */
+    .navbar .nav > li > a {
+      padding: 15px 20px;
+    }
+
+    /* Offset the responsive button for proper vertical alignment */
+    .navbar .btn-navbar {
+      margin-top: 10px;
+    }
+
+    /* RESPONSIVE CSS
+    -------------------------------------------------- */
+
+    @media (max-width: 979px) {
+
+      .container.navbar-wrapper {
+        margin-bottom: 0;
+        width: auto;
+      }
+      .navbar-inner {
+        border-radius: 0;
+        margin: -20px 0;
+      }
+
+    }
+
+
+    @media (max-width: 767px) {
+
+      .navbar-inner {
+        margin: 0px;
+      }
+
+    }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+     <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li><a class="brand" href="#"><img src = "img/logo.png">Great Connections,Great stuff.</a></li>
+              <li class="dropdown"  style="margin-left:30px;margin-top:5px;">
+                  <a href="#" class="dropdown-toggle brand row-fluid offset2" data-toggle="dropdown">Browse by <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                    <li class="divider"></li>
+                    <li class="nav-header"></li>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                  </ul>
+              </li>
+              <form class="navbar-search" >
+                  <div class="input-prepend" style="margin-top:10px;margin-left:-8px">
+                    <span class="add-on"><i class="icon-search"></i></span><input type="text" class="span" placeholder="What do you need?">
+                    <button class='btn' style="margin-left:3px">Search</button>
+                  </div>
+              </form>
+              <li style="margin-top:5px;margin-left:50px"><a class="brand" href="#">Your Matches(10)</a></li>
+              <li style="margin-left:5px;margin-top:5px"><a class="brand" href="#">Notifications(34)</a></li>
+              <li style="margin-left:5px;margin-top:5px"><a class="brand" href="#">Hi!<img src="img/Brad-Pitt-2013-HD-Wallpaper.jpg" height="60px" width="40px" style="margin-left:5px"></a></li>
+              <li class="row"><a href="#"><img src="img/system_config_services.png" height="30px" width="30px"></a></li>
+              
+            </ul>
+          </div>
+        
+      </div>
+    </div>
+ 
+<!-- Content -->
+<section id="wrap">
+<div id="content">
+  <div class="grid" style="margin-top:42px">
+    <div class="imgholder">
+      <img src="img/866_1_.jpg"/>
+    </div>
+    <strong>Gold Ring</strong>
+    <p>A beautiful ring</p>
+    <div class="meta">by malik</div>
+  </div>
+  <div class="grid" style="margin-top:42px">
+    <div class="imgholder">
+      <img src="img/960_1_.jpg" />
+    </div>
+    <strong>Bracelet</strong>
+    <p>Where is the bridge lead to?</p>
+    <div class="meta">by SigitEko</div>
+  </div>
+  <div class="grid" style="margin-top:42px">
+    <div class="imgholder">
+      <img src="img/Arabian_Horses.jpg" />
+    </div>
+    <strong>Arabian Horses</strong>
+    <p>The fall of the tree...</p>
+    <div class="meta">by Lars van de Goor</div>
+  </div>
+  <div class="grid" style="margin-top:42px">
+    <div class="imgholder">
+      <img src="img/dreamhouse.jpg" />
+    </div>
+    <strong>My Dream House</strong>
+    <p>Sweet Home</p>
+    <div class="meta">by Andrea Andrade</div>
+  </div>
+  <div class="grid" style="margin-top:42px">
+    <div class="imgholder">
+      <img src="img/dream-house-51.jpg" />
+    </div>
+    <strong>Light</strong>
+    <p>The only shinning light...</p>
+    <div class="meta">by Lars van de Goor</div>
+  </div>
+  <div class="grid" style="margin-top:42px">
+    <div class="imgholder">
+      <img src="img/french_fries.jpg" />
+    </div>
+    <strong>Rooster's Ranch</strong>
+    <p>Rooster's ranch landscape...</p>
+    <div class="meta">by Andrea Andrade</div>
+  </div>
+  <div class="grid" style="margin-top:42px">
+    <div class="imgholder">
+      <img src="img/Goldeneye_By_Haaghun.jpg" />
+    </div>
+    <strong>Autumn Light</strong>
+    <p>Sun shinning into forest...</p>
+    <div class="meta">by Lars van de Goor</div>
+  </div>
+  <div class="grid" style="margin-top:42px">
+    <div class="imgholder">
+      <img src="img/images.jpeg" />
+    </div>
+    <strong>Yellow cloudy</strong>
+    <p>It is yellow cloudy...</p>
+    <div class="meta">by Zsolt Zsigmond</div>
+  </div>
+  <div class="grid" style="margin-top:42px">
+    <div class="imgholder">
+      <img src="img/iphone_3gs.jpg" />
+    </div>
+    <strong>Herringfleet Mill</strong>
+    <p>Just a herringfleet mill...</p>
+    <div class="meta">by Ian Flindt</div>
+  </div>
+  <div class="grid" style="margin-top:42px">
+    <div class="imgholder">
+      <img src="img/johnnie-walker-blue-label-fmt.png" />
+    </div>
+    <strong>Battle Field</strong>
+    <p>Battle Field for you...</p>
+    <div class="meta">by Andrea Andrade</div>
+  </div>
+  <div class="grid" style="margin-top:42px">
+    <div class="imgholder">
+      <img src="img/photo.JPG" />
+    </div>
+    <strong>Sundays Sunset</strong>
+    <p>Beach view sunset...</p>
+    <div class="meta">by Robert Strachan</div>
+  </div>
+  <div class="grid" style="margin-top:42px">
+    <div class="imgholder">
+      <img src="img/Screen_Shot_2012-04-27_at_8.33.11_PM.png" />
+    </div>
+    <strong>Sun Flower</strong>
+    <p>Good Morning Sun flower...</p>
+    <div class="meta">by Zsolt Zsigmond</div>
+  </div>
+  <div class="grid" style="margin-top:42px">
+    <div class="imgholder">
+      <img src="img/trader_item.jpg" />
+    </div>
+    <strong>Beach</strong>
+    <p>Something on beach...</p>
+    <div class="meta">by unknown</div>
+  </div>
+  <div class="grid" style="margin-top:42px">
+    <div class="imgholder">
+      <img src="img/newlife_avatar.jpg" />
+    </div>
+    <strong>Flowers</strong>
+    <p>Hello flowers...</p>
+    <div class="meta">by R A Stanley</div>
+  </div>
+  <div class="grid" style="margin-top:42px">
+    <div class="imgholder">
+      <img src="img/4thstreet.jpg" />
+    </div>
+    <strong>Alone</strong>
+    <p>Lonely plant...</p>
+    <div class="meta">by Zsolt Zsigmond</div>
+  </div> <!---->
+</div>
+<script src=" js/bootstrap-dropdown.js"></script>
+<script src="js/bootstrap-collapse.js"></script>
+ <script>
+  var page = 1;
+    $(window).scroll(function(){
+      if  ($(window).scrollTop() >= $(document).height() - $(window).height() - 50){
+        if(page < 5){
+          $.get("index3.html", function(data){
+            $('#content').append(data);
+            $('#content').BlocksIt({
+              numOfCol: 5,
+              offsetX: 8,
+              offsetY: 8
+            });
+            page = page+1;
+          });
+        }
+      }
+    });
+//   $(document).ready(function() {
+//    if($(document).height() - $(window).height() <= $(window).scrollTop() + 600) {
+//      next_page();
+//    }
+//  }
+//   function next_page()
+//   {
+//     $.get("index3.html", function(data){
+//       $('#content').append(data);
+//       $('#content').BlocksIt({
+//       numOfCol: 5,
+//       offsetX: 8,
+//       offsetY: 8
+//     });
+// });
+// }
+</script>
+</body>
+</html>
