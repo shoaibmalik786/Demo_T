@@ -123,7 +123,13 @@
       margin-top: 10px;
     }
 
+     /* Featurettes
+    ------------------------- */
 
+    .featurette-divider {
+      margin: 0px 0; 
+      /* Space out the Bootstrap <hr> more */
+    }
 
     /* RESPONSIVE CSS
     -------------------------------------------------- */
@@ -145,6 +151,10 @@
       .carousel img {
         width: auto;
         height: 500px;
+      }
+      .featurette {
+        height: auto;
+        padding: 0;
       }
     }
 
@@ -241,6 +251,18 @@
       <div class="carousel-inner">        
           <img src="img/Brad-Pitt-2013-HD-Wallpaper.jpg" alt="">
       </div>
+      <div style="margin-left:25px;width:25%;background-color:#0B0202;position:fixed;top:12%">
+        <div style="margin-left:5px;margin-top:5px;float:left;padding-right:10px"><img src="img/Brad-Pitt-2013-HD-Wallpaper.jpg" width="100px"></div>
+        <div style="font-size:26px;font-weight:bold;color:#C0C0C0;padding-top:10px">Jim</br><span style="font-size:14px;color:#808080">LIVES IN<span></br>
+        <span style="color:#C0C0C0">Venica,C.A.</span></br>
+        <span style="margin-left:116px">IS VERIFIED</span>
+        </div>
+        <hr>
+        <div style="margin:10px;padding-right:10px;font-weight:bold;border-right:2px solid #808080;float:left">HAVES</br><span style="color:#0099CC;font-size:20px">5</span></div>
+        <div style="margin:10px;padding-right:10px;font-weight:bold;border-right:2px solid #808080;float:left">WANTS</br><span style="color:#0099CC;font-size:20px">30</span></div>
+        <div style="margin:10px;padding-right:10px;font-weight:bold;border-right:2px solid #808080;float:left">REVIEWS</br><span style="color:#0099CC;font-size:20px">34</span></div>
+        <div style="margin-top:15px;font-weight:bold;"><button class="btn" type="button">Follow</button></div>
+      </div>
       <a class="right carousel-control" href="#myCarousel">&rsaquo;</a>
     
 
@@ -260,14 +282,6 @@
     <script src="js/bootstrap-collapse.js"></script>
     <script src="js/bootstrap-carousel.js"></script>
     <script src="js/bootstrap-typeahead.js"></script>
-    <script>
-      !function ($) {
-        $(function(){
-          // carousel demo
-          $('#myCarousel').carousel()
-        })
-      }(window.jQuery)
-    </script>
     <script src="js/holder/holder.js"></script>
   </body>
 </html>
