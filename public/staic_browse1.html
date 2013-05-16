@@ -5,38 +5,156 @@
 <meta name="description" content="BlocksIt.js jQuery plugin Demonstration #2 Pinterest dynamic grid with CSS3 Transitions by inWebson.com"/>
 <meta name="keywords" content="demonstration,demo,jquery,blocksit.js,css3,dynamic,grid,layout,inwebson"/>
 <link rel='stylesheet' href='css/style.css' media='screen' />
-<link href="css/bootstrap.css" rel="stylesheet">
-<link href="css/bootstrap-responsive.css" rel="stylesheet">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="js/blocksit.min.js"></script>
 <!--[if lt IE 9]>
 <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
-  <style>
+<script src="js/blocksit.min.js"></script>
+<script>
+$(document).ready(function() {
+  
+  //blocksit define
+  $(window).load( function() {
+    $('#content').BlocksIt({
+      numOfCol: 5,
+      offsetX: 8,
+      offsetY: 8
+    });
+  });
+  
+  //window resize
+  var currentWidth = 1100;
+  $(window).resize(function() {
+    var winWidth = $(window).width();
+    var conWidth;
+    if(winWidth < 660) {
+      conWidth = 440;
+      col = 2
+    } else if(winWidth < 880) {
+      conWidth = 660;
+      col = 3
+    } else if(winWidth < 1100) {
+      conWidth = 880;
+      col = 4;
+    } else {
+      conWidth = 1100;
+      col = 5;
+    }
+    
+    if(conWidth != currentWidth) {
+      currentWidth = conWidth;
+      $('#content').width(conWidth);
+      $('#content').BlocksIt({
+        numOfCol: col,
+        offsetX: 8,
+        offsetY: 8
+      });
+    }
+  });
+});
+</script>
+<!-- Le styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <style>
+
+    /* GLOBAL STYLES
+    -------------------------------------------------- */
+    /* Padding below the footer and lighter body text */
+
     body {
-      padding-bottom: 20px;
+      padding-bottom: 40px;
       color: #5a5a5a;
     }
+
+
+
     /* CUSTOMIZE THE NAVBAR
     -------------------------------------------------- */
+
+    /* Special class on .container surrounding .navbar, used for positioning it into place. */
+    .navbar-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      margin-top: 0px;
+      width:100%;
+      margin-bottom: -10px; /* Negative margin to pull up carousel. 90px is roughly margins and height of navbar. */
+    }
+    .navbar-wrapper .navbar {
+       
+       margin-left:-115px;
+       padding-bottom:-50px;
+    }
+
+    /* Remove border and change up box shadow for more contrast */
+    .navbar .navbar-inner {
+      border: 0;
+      -webkit-box-shadow: 0 2px 10px rgba(0,0,0,.25);
+         -moz-box-shadow: 0 2px 10px rgba(0,0,0,.25);
+              box-shadow: 0 2px 10px rgba(0,0,0,.25);
+    }
+
+    /* Downsize the brand/project name a bit */
     .navbar .brand {
       padding: 14px 20px 16px; /* Increase vertical padding to match navbar links */
       font-size: 16px;
       font-weight: bold;
       text-shadow: 0 -1px 0 rgba(0,0,0,.5);
     }
+
+    /* Navbar links: increase padding for taller navbar */
     .navbar .nav > li > a {
-      /*padding: 15px 20px;*/
-    }    
-  </style>
+      padding: 15px 20px;
+    }
+
+    /* Offset the responsive button for proper vertical alignment */
+    .navbar .btn-navbar {
+      margin-top: 10px;
+    }
+
+    /* RESPONSIVE CSS
+    -------------------------------------------------- */
+
+    @media (max-width: 979px) {
+
+      .container.navbar-wrapper {
+        margin-bottom: 0;
+        width: auto;
+      }
+      .navbar-inner {
+        border-radius: 0;
+        margin: -20px 0;
+      }
+
+    }
+
+
+    @media (max-width: 767px) {
+
+      .navbar-inner {
+        margin: 0px;
+      }
+
+    }
+    </style>
 </head>
 <body>
 
 <!-- Header -->
      <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">          
+      <div class="navbar-inner">
+        
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          
           <div class="nav-collapse collapse">
-            <ul class="nav" style="margin-left:10px;width:100%">
+            <ul class="nav" style="margin-left:15px">
               <li><a class="brand" href="#"><img src = "img/logo.png">Great Connections,Great stuff.</a></li>
               <li class="dropdown"  style="margin-left:30px;margin-top:5px;">
                   <a href="#" class="dropdown-toggle brand row-fluid offset2" data-toggle="dropdown">Browse by <b class="caret"></b></a>
@@ -51,22 +169,22 @@
                   </ul>
               </li>
               <form class="navbar-search" >
-                  <div class="input-prepend" style="margin-top:9px;margin-left:-8px">
+                  <div class="input-prepend" style="margin-top:10px;margin-left:-8px">
                     <span class="add-on"><i class="icon-search"></i></span><input type="text" class="span" placeholder="What do you need?">
                     <button class='btn' style="margin-left:3px">Search</button>
                   </div>
               </form>
               <li style="margin-top:5px;margin-left:50px"><a class="brand" href="#">Your Matches(10)</a></li>
               <li style="margin-left:5px;margin-top:5px"><a class="brand" href="#">Notifications(34)</a></li>
-              <li style="margin-left:5px;"><a class="brand" href="#">Hi!<img src="img/Brad-Pitt-2013-HD-Wallpaper.jpg" style="margin-left:5px;height:30px;width:40px"></a></li>
-              <li style="margin-left:3px;margin-top:12px"><a href="#"><img src="img/system_config_services.png" style="height:30px;width:30px"></a></li>
+              <li style="margin-left:5px;margin-top:5px"><a class="brand" href="#">Hi!<img src="img/Brad-Pitt-2013-HD-Wallpaper.jpg" height="60px" width="40px" style="margin-left:5px"></a></li>
+              <li class="row"><a href="#"><img src="img/system_config_services.png" height="30px" width="30px"></a></li>
               
             </ul>
           </div>
         
       </div>
     </div>
-
+ 
 <!-- Content -->
 <section id="wrap">
 <div id="content">
@@ -189,11 +307,11 @@
     <strong>Alone</strong>
     <p>Lonely plant...</p>
     <div class="meta">by Zsolt Zsigmond</div>
-  </div>
+  </div> <!---->
 </div>
 <script src=" js/bootstrap-dropdown.js"></script>
 <script src="js/bootstrap-collapse.js"></script>
-<script>
+ <script>
   var page = 1;
     $(window).scroll(function(){
       if  ($(window).scrollTop() >= $(document).height() - $(window).height() - 50){
@@ -210,47 +328,6 @@
         }
       }
     });
-    $(document).ready(function() {
-  
-  //blocksit define
-  $(window).load( function() {
-    $('#content').BlocksIt({
-      numOfCol: 5,
-      offsetX: 8,
-      offsetY: 8
-    });
-  });
-  
-  //window resize
-  var currentWidth = 1100;
-  $(window).resize(function() {
-    var winWidth = $(window).width();
-    var conWidth;
-    if(winWidth < 660) {
-      conWidth = 440;
-      col = 2
-    } else if(winWidth < 880) {
-      conWidth = 660;
-      col = 3
-    } else if(winWidth < 1100) {
-      conWidth = 880;
-      col = 4;
-    } else {
-      conWidth = 1100;
-      col = 5;
-    }
-    
-    if(conWidth != currentWidth) {
-      currentWidth = conWidth;
-      $('#content').width(conWidth);
-      $('#content').BlocksIt({
-        numOfCol: col,
-        offsetX: 8,
-        offsetY: 8
-      });
-    }
-  });
-});
 </script>
 </body>
 </html>
