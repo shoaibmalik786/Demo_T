@@ -208,5 +208,23 @@ $(document).ready(function() {
 <script src=" js/bootstrap-dropdown.js"></script>
 <script src="js/bootstrap-collapse.js"></script>
 <script src="js/blocksit.min.js"></script>
+<script>
+  var page = 1;
+    $(window).scroll(function(){
+      if  ($(window).scrollTop() >= $(document).height() - $(window).height() - 50){
+        if(page < 5){
+          $.get("index3.html", function(data){
+            $('#content').append(data);
+            $('#content').BlocksIt({
+              numOfCol: 5,
+              offsetX: 8,
+              offsetY: 8
+            });
+            page = page+1;
+          });
+        }
+      }
+    });
+</script>
 </body>
 </html>
