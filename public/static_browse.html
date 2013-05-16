@@ -5,61 +5,14 @@
 <meta name="description" content="BlocksIt.js jQuery plugin Demonstration #2 Pinterest dynamic grid with CSS3 Transitions by inWebson.com"/>
 <meta name="keywords" content="demonstration,demo,jquery,blocksit.js,css3,dynamic,grid,layout,inwebson"/>
 <link rel='stylesheet' href='css/style.css' media='screen' />
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="js/blocksit.min.js"></script>
 <!--[if lt IE 9]>
 <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
-<script>
-$(document).ready(function() {
-  
-  //blocksit define
-  $(window).load( function() {
-    $('#content').BlocksIt({
-      numOfCol: 5,
-      offsetX: 8,
-      offsetY: 8
-    });
-  });
-  
-  //window resize
-  var currentWidth = 1100;
-  $(window).resize(function() {
-    var winWidth = $(window).width();
-    var conWidth;
-    if(winWidth < 660) {
-      conWidth = 440;
-      col = 2
-    } else if(winWidth < 880) {
-      conWidth = 660;
-      col = 3
-    } else if(winWidth < 1100) {
-      conWidth = 880;
-      col = 4;
-    } else {
-      conWidth = 1100;
-      col = 5;
-    }
-    
-    if(conWidth != currentWidth) {
-      currentWidth = conWidth;
-      $('#content').width(conWidth);
-      $('#content').BlocksIt({
-        numOfCol: col,
-        offsetX: 8,
-        offsetY: 8
-      });
-    }
-  });
-});
-</script>
-<link href="css/bootstrap.css" rel="stylesheet">
-<link href="css/bootstrap-responsive.css" rel="stylesheet">
-    <style>
-
-    /* GLOBAL STYLES
-    -------------------------------------------------- */
-    /* Padding below the footer and lighter body text */
-
+  <style>
     body {
       padding-bottom: 20px;
       color: #5a5a5a;
@@ -75,7 +28,7 @@ $(document).ready(function() {
     .navbar .nav > li > a {
       padding: 15px 20px;
     }    
-    </style>
+  </style>
 </head>
 <body>
 
@@ -240,7 +193,6 @@ $(document).ready(function() {
 </div>
 <script src=" js/bootstrap-dropdown.js"></script>
 <script src="js/bootstrap-collapse.js"></script>
-<script src="js/blocksit.min.js"></script>
 <script>
   var page = 1;
     $(window).scroll(function(){
@@ -258,6 +210,47 @@ $(document).ready(function() {
         }
       }
     });
+    $(document).ready(function() {
+  
+  //blocksit define
+  $(window).load( function() {
+    $('#content').BlocksIt({
+      numOfCol: 5,
+      offsetX: 8,
+      offsetY: 8
+    });
+  });
+  
+  //window resize
+  var currentWidth = 1100;
+  $(window).resize(function() {
+    var winWidth = $(window).width();
+    var conWidth;
+    if(winWidth < 660) {
+      conWidth = 440;
+      col = 2
+    } else if(winWidth < 880) {
+      conWidth = 660;
+      col = 3
+    } else if(winWidth < 1100) {
+      conWidth = 880;
+      col = 4;
+    } else {
+      conWidth = 1100;
+      col = 5;
+    }
+    
+    if(conWidth != currentWidth) {
+      currentWidth = conWidth;
+      $('#content').width(conWidth);
+      $('#content').BlocksIt({
+        numOfCol: col,
+        offsetX: 8,
+        offsetY: 8
+      });
+    }
+  });
+});
 </script>
 </body>
 </html>
